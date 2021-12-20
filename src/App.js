@@ -14,15 +14,12 @@ class App extends Component {
   };
 
   updateFeedbacks = (data) => {
-    console.log(data);
-
     this.setState((prevState) => {
       return {
         [data]: prevState[data] + 1,
         total: prevState.total + 1,
       };
     });
-    console.log(this.state.total);
   };
 
   checkTotal = () => {

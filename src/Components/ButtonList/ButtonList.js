@@ -1,6 +1,5 @@
-import { Component } from 'react';
-import propTypes from 'prop-types';
-import Buttons from '../Buttons/Buttons';
+import { Component } from "react";
+import propTypes from "prop-types";
 
 export default class B extends Component {
   state = {
