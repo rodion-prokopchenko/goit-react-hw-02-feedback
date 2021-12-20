@@ -15,13 +15,14 @@ class App extends Component {
 
   updateFeedbacks = (data) => {
     console.log(data);
-    console.log(this.state.total);
+
     this.setState((prevState) => {
       return {
         [data]: prevState[data] + 1,
         total: prevState.total + 1,
       };
     });
+    console.log(this.state.total);
   };
 
   checkTotal = () => {
@@ -33,14 +34,15 @@ class App extends Component {
       return true;
     }
   };
-  // updatePositiveFeedback = () => {
-  //   this.setState(prevState => {
-  //     return {
-  //       [data]: prevState[data] + 1,
-  //       total: prevState.total + 1,
-  //     };
-  //   });
-  // };
+
+  updatePositiveFeedback = () => {
+    const { total, good, positiveFeedback } = this.state;
+
+    const goodPercent = Math.round((good / total) * 100) + "%";
+
+    this.setState({ positiveFeedback: goodPercent });
+    return;
+  };
 
   render() {
     const { good, neutral, bad, total, positiveFeedback } = this.state;
@@ -53,6 +55,7 @@ class App extends Component {
             <FeedbackOptions
               options={["good", "neutral", "bad"]}
               onLeaveFeedback={this.updateFeedbacks}
+              updatePositiveFeedback={this.updatePositiveFeedback}
             />
           }
         ></Section>
